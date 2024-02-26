@@ -3,7 +3,7 @@ import {AES, enc} from 'crypto-js';
 import {useDropzone} from 'react-dropzone';
 import {io} from "socket.io-client";
 import {useKeyContext} from "./KeyContext";
-import fs from "fs";
+// import fs from "fs";
 
 const FileEncryptionComponent: React.FC = () => {
     const [file, setFile] = useState<File | null>(null);
