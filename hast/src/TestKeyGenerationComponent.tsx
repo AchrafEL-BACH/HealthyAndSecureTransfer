@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CryptoJS from 'crypto-js';
 import axios from 'axios';
-import { useKeyContext} from "./KeyContext";
+import { useKeyContext } from "./KeyContext";
 
 interface Props {
     onComplete: () => void;
