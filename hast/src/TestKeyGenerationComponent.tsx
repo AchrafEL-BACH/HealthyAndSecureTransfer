@@ -8,7 +8,7 @@ interface Props {
     username: string;
 }
 
-const KeyGenerationComponent: React.FC<Props> = ({ onComplete, username }) => {
+const TestKeyGenerationComponent: React.FC<Props> = ({ onComplete, username }) => {
     const [generatedKey, setGeneratedKey] = useState<string>('');
     // @ts-ignore
     const { sharedState, setSharedState } = useKeyContext();
@@ -63,4 +63,4 @@ const KeyGenerationComponent: React.FC<Props> = ({ onComplete, username }) => {
     );
 };
 
-export default KeyGenerationComponent;
+export default TestKeyGenerationComponent;

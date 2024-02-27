@@ -5,7 +5,7 @@ import {io} from "socket.io-client";
 import {useKeyContext} from "./KeyContext";
 import fs from "fs";
 
-const FileEncryptionComponent: React.FC = () => {
+const TestFileEncryptionComponent: React.FC = () => {
     const [file, setFile] = useState<File | null>(null);
     const [encryptedFile, setEncryptedFile] = useState<string | null>(null);
     const [decryptedFile, setDecryptedFile] = useState<File | null>(null);
@@ -223,7 +223,7 @@ const FileEncryptionComponent: React.FC = () => {
                     )}
                     <input
                         type="text"
-                        placeholder="Enter value"
+                        placeholder="Enter File name"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                     />
@@ -234,4 +234,4 @@ const FileEncryptionComponent: React.FC = () => {
     );
 };
 
-export default FileEncryptionComponent;
+export default TestFileEncryptionComponent;

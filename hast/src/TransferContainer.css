@@ -1,0 +1,41 @@
+.transfer-container {
+    position: fixed;
+    top: 50%; /* Adjust to account for the height of the headbar */
+    left: 20px;
+    width: calc(50% - 40px); /* Half of the page width */
+    height: 50vh; /* Half of the viewport height */
+    transform: translateY(-50%); /* Center vertically */
+    z-index: 1; /* Ensure component is behind headbar */
+    background-color: white; /* Add background color if needed */
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.top{
+    height: 100px;
+}
+
+.bottom{
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    height:90px;
+}
+
+.bottom button{
+    grid-column: 4 / 6;
+    background-color: transparent;
+    border: 2px solid black;
+    outline: 1px solid black;
+    outline-offset: 3px;
+    margin: 5px;
+    font-size: 3vh;
+    font-family: fantasy;
+}
+
+.middle {
+    flex-grow: 1;
+}

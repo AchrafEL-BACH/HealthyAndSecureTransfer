@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import CryptoJS from 'crypto-js';
 import axios from 'axios';
-import KeyGenerationComponent from "./KeyGenerationComponent";
-import FileEncryptionComponent from "./FileEncryptionComponent";
+import TestKeyGenerationComponent from "./TestKeyGenerationComponent";
+import TestFileEncryptionComponent from "./TestFileEncryptionComponent";
 import {KeyProvider} from "./KeyContext";
 
 const TestPage: React.FC = () => {
@@ -19,7 +19,7 @@ const TestPage: React.FC = () => {
     const initiateFileTransfer = async (destination: string) => {
         try {
             // Initiate file transfer process to the specified destination
-            // This could involve navigating to the FileEncryptionComponent
+            // This could involve navigating to the TestFileEncryptionComponent
             console.log('Initiating file transfer to', destination);
         } catch (error) {
             console.error('Error initiating file transfer:', error);
@@ -30,8 +30,8 @@ const TestPage: React.FC = () => {
         <div>
             <h2>Test Page</h2>
             <KeyProvider>
-                <KeyGenerationComponent onComplete={() => registerUser('UserA')} username="UserA" />
-                <FileEncryptionComponent />
+                <TestKeyGenerationComponent onComplete={() => registerUser('UserA')} username="UserA" />
+                <TestFileEncryptionComponent />
             </KeyProvider>
         </div>
     );
