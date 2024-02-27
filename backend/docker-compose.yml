@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  nodejs:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=postgres://postgres:mysecretpassword@postgres:5432/mydatabase
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: mydatabase
