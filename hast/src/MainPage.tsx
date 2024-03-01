@@ -8,7 +8,7 @@ import {KeyProvider} from "./KeyContext";
 function MainPage() {
 
     return (
-        <div className="MainPage">
+        <div className="MainPage" style={{color: "#00B3B9"}}>
             <Headbar/>
             <div style={{marginTop:"100px"}}>
                 <h1>Bienvenue {sessionStorage.getItem("name")} sur HAST</h1>

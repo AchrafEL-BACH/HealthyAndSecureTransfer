@@ -132,10 +132,8 @@ const writeStringToFile = (encrypted) => {
         if (filteredFiles.length > 0) {
             // Get the last file in the sorted list
             lastFile = +filteredFiles[filteredFiles.length - 1];
-            console.log('Last file:', lastFile);
         } else {
             lastFile = 0;
-            console.log('No files found in the directory.');
         }
         const filePath = `./encryptedFiles/${lastFile+1}`
 
@@ -155,12 +153,9 @@ const getFilesByDate = (directoryPath, date = (() => {
     return oneWeekAgo;
 })()) => {
     const files = fs.readdirSync(directoryPath);
-    console.log(directoryPath);
-    console.log(files);
     return files.map((file) => {
         const filePath = path.join(directoryPath, file);
         const stat = fs.statSync(filePath);
-        console.log(filePath, stat);
         if (stat.isFile()) {
             const fileNameDate = new Date(file); // Parse file name into Date object
             if (date === null || fileNameDate > date) { // Compare with provided date
@@ -189,7 +184,6 @@ const writeFiletoUser = (encrypted, username) => {
 }
 
 io.on('connection', (socket) => {
-    console.log('Client connected');
 
     // Handle transfer initiation request from the client
     socket.on('initiateTransfer', (destinationUser) => {
@@ -224,8 +218,9 @@ io.on('connection', (socket) => {
                 let keyCbyB = cryptoJS.AES.encrypt(sessionKey, userKey).toString();
                 console.log('Key C by B:', keyCbyB);
                 let finalFile = encryptedFile + keyCbyB;
-                console.log('Final encrypted file:', finalFile);
+                console.log('Final encrypted file size:', finalFile.length);
                 writeFiletoUser(finalFile, destinationUser);
+                socket.emit("transferFinished");
             });
         } catch (error) {
             console.error('Error in file transfer:', error);
@@ -285,11 +280,6 @@ io.on('connection', (socket) => {
             console.log(new File(filename));
         });
     })
-
-    // Handle client disconnection
-    socket.on('disconnect', () => {
-        console.log('Client disconnected');
-    });
 });
 
 const PORT = process.env.PORT || 3000;

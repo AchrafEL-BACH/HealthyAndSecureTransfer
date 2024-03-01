@@ -50,6 +50,9 @@ const TransferTool: React.FC<TransferToolProps> = ({className, contactName}) => 
 
     const initiateTransfer = (destinationUser: string) => {
         try {
+            let finished = document.getElementById("finished");
+            // @ts-ignore
+            finished.innerHTML = "";
             const socketOptions = {
                 transports: ['websocket'], // Enable WebSocket transport
                 upgrade: false, // Prevent protocol upgrades
@@ -66,6 +69,9 @@ const TransferTool: React.FC<TransferToolProps> = ({className, contactName}) => 
                         console.log(keyCbyA)
                         let payload = encryptedContent + keyCbyA;
                         socket.emit('encryptedFile', payload);
+                        let text = document.createElement("p");
+                        text.innerHTML = "Transfer is done.";
+                        finished?.appendChild(text);
                     })
             })
         } catch (e) {
@@ -104,6 +110,9 @@ const TransferTool: React.FC<TransferToolProps> = ({className, contactName}) => 
             ) : (
                 <div className="file unselected">Drag & drop a file here, or click to select a file</div>
             )}
+            <div id="finished">
+
+            </div>
         </div>
     );
 }

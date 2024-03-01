@@ -4,8 +4,8 @@ import bcrypt from "bcryptjs";
 import './LoginPage.css';
 
 const LoginPage = () => {
-    const [username, setUsername] = useState('MrDoctor');
-    const [password, setPassword] = useState('DoctorPassword');
+    const [username, setUsername] = useState('UserB');
+    const [password, setPassword] = useState('UserBPass');
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
